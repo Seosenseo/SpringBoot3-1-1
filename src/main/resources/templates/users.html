@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h2>User List</h2>
+<h3><a href="/new">Add User</a></h3>
+<table border="5">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.lastname}"></td>
+        <td th:text="${user.address}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${user.id})}">Edit</a>
+            <a th:href="@{/delete/{id}(id=${user.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<h5><a href="/clear-table">clean table</a></h5>
+</body>
+</html>
